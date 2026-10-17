@@ -1,291 +1,294 @@
-<div id="cortis-page">
-  <div class="cortis-stage">
-
-    <!-- STICKER 1: CAMERA -->
-    <div class="sticker" style="--x:10%;--y:16%;--delay:.05s;--angle:-8deg">
-      <div class="sticker-art">
-        <img src="https://lh3.googleusercontent.com/d/1L9evm0rWKCYgeJsgLQJMySZNCSfPX8Wi" alt="Retro camera">
-      </div>
-    </div>
-
-    <!-- STICKER 2: GO -->
-    <div class="sticker" style="--x:27%;--y:13%;--delay:.12s;--angle:6deg">
-      <div class="sticker-art">
-        <img src="GO_SIGN_PNG_URL" alt="Go sticker">
-      </div>
-    </div>
-
-    <!-- STICKER 3: GUITAR -->
-    <div class="sticker" style="--x:46%;--y:13%;--delay:.2s;--angle:-5deg">
-      <div class="sticker-art">
-        <img src="GUITAR_PNG_URL" alt="Guitar sticker">
-      </div>
-    </div>
-
-    <!-- STICKER 4: CASSETTE -->
-    <div class="sticker" style="--x:72%;--y:14%;--delay:.28s;--angle:7deg">
-      <div class="sticker-art">
-        <img src="CASSETTE_PNG_URL" alt="Cassette">
-      </div>
-    </div>
-
-    <!-- STICKER 5: VINYL -->
-    <div class="sticker" style="--x:90%;--y:23%;--delay:.36s;--angle:10deg">
-      <div class="sticker-art">
-        <img src="VINYL_PNG_URL" alt="Vinyl record">
-      </div>
-    </div>
-
-    <!-- STICKER 6: FASHION TEXT -->
-    <div class="sticker" style="--x:10%;--y:42%;--delay:.44s;--angle:-6deg">
-      <div class="sticker-art">
-        <img src="FASHION_PNG_URL" alt="Fashion sticker">
-      </div>
-    </div>
-
-    <!-- STICKER 7: SMALL CAMERA -->
-    <div class="sticker" style="--x:89%;--y:47%;--delay:.52s;--angle:8deg">
-      <div class="sticker-art">
-        <img src="CAMERA2_PNG_URL" alt="Camera sticker">
-      </div>
-    </div>
-
-    <!-- STICKER 8: MUSIC -->
-    <div class="sticker" style="--x:17%;--y:72%;--delay:.6s;--angle:7deg">
-      <div class="sticker-art">
-        <img src="MUSIC_PNG_URL" alt="Music sticker">
-      </div>
-    </div>
-
-    <!-- STICKER 9: ACAI -->
-    <div class="sticker" style="--x:82%;--y:74%;--delay:.68s;--angle:-7deg">
-      <div class="sticker-art">
-        <img src="ACAI_PNG_URL" alt="Acai sticker">
-      </div>
-    </div>
-
-    <!-- STICKER 10: MICROPHONE -->
-    <div class="sticker" style="--x:36%;--y:87%;--delay:.76s;--angle:-5deg">
-      <div class="sticker-art">
-        <img src="MICROPHONE_PNG_URL" alt="Microphone">
-      </div>
-    </div>
-
-    <!-- STICKER 11: STARS / DECORATION -->
-    <div class="sticker" style="--x:62%;--y:87%;--delay:.84s;--angle:5deg">
-      <div class="sticker-art">
-        <img src="STARS_PNG_URL" alt="Star stickers">
-      </div>
-    </div>
-
-    <!-- CHỮ CORTIS Ở TÂM: HIỆU ỨNG RIÊNG -->
-    <div class="cortis-title">
-      <img src="CORTIS_TITLE_PNG_URL" alt="CORTIS">
-    </div>
-
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* ===== 1. KHUNG BÌA ===== */
-#cortis-page {
-  width: 100%;
-  overflow: hidden;
-  background: #dfeffa;
-}
-
-#cortis-page * {
+* {
   box-sizing: border-box;
 }
 
-#cortis-page .cortis-stage {
+html, body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: Arial, sans-serif;
+  background: #dff1fc;
+}
+
+.cover {
   position: relative;
   width: 100%;
-  aspect-ratio: 5 / 3;
+  height: clamp(430px, 65vw, 760px);
+  min-height: 430px;
   overflow: hidden;
   isolation: isolate;
-
   background:
-    radial-gradient(
-      ellipse at 50% 50%,
-      #eaf6fc 0%,
-      #dfeffa 72%,
-      #d7eaf7 100%
-    );
+    radial-gradient(ellipse at center,
+      #eaf7ff 0%,
+      #dff1fc 65%,
+      #d6eafa 100%);
 }
 
-/* ===== 2. STICKER BUNG TỪ TÂM ===== */
-#cortis-page .sticker {
+/* Các nét trang trí nhẹ trên nền */
+.cover::before {
+  content: "";
   position: absolute;
-  left: var(--x);
-  top: var(--y);
+  inset: 0;
+  pointer-events: none;
+  opacity: .12;
+  background-image:
+    radial-gradient(#7399bd .7px, transparent .7px);
+  background-size: 13px 13px;
+}
 
-  width: clamp(40px, 12%, 145px);
-
-  opacity: 0;
-  z-index: 2;
+/* Vị trí trung tâm */
+.center {
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  width: 44%;
+  max-width: 590px;
   transform: translate(-50%, -50%);
-
-  animation: sticker-burst 1s
-    cubic-bezier(.16, 1, .3, 1)
-    var(--delay) both;
-}
-
-/* Lớp bên trong dùng riêng cho tương tác */
-#cortis-page .sticker-art {
-  width: 100%;
-  transform-origin: center;
+  z-index: 5;
+  opacity: 0;
+  animation: titleAppear 1.1s ease-out .15s forwards;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
 }
 
-#cortis-page .sticker-art img {
+.center img {
   display: block;
   width: 100%;
   height: auto;
   object-fit: contain;
-
-  transform: rotate(var(--angle));
-  filter: drop-shadow(1px 2px 2px #526b7c20);
+  transform-origin: center;
+  animation: titleIdle 4s ease-in-out 1.5s infinite;
 }
 
-/* Sticker đi từ đúng tâm đến vị trí đích */
-@keyframes sticker-burst {
-  0% {
-    left: 50%;
-    top: 50%;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(.05);
-  }
-
-  70% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.08);
-  }
-
-  100% {
-    left: var(--x);
-    top: var(--y);
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-/* ===== 3. RÊ CHUỘT / CHẠM STICKER ===== */
-/* Chỉ lớp bên trong chuyển động nên sticker
-   không bị lệch khỏi vị trí cuối cùng. */
-
-#cortis-page .sticker-art:hover,
-#cortis-page .sticker-art:focus-visible {
-  animation: sticker-interact .5s ease-in-out infinite alternate;
-}
-
-@keyframes sticker-interact {
-  from {
-    transform: scale(1) rotate(-1deg);
-  }
-
-  to {
-    transform: scale(1.07) rotate(1deg);
-  }
-}
-
-/* Chạm trên màn hình cảm ứng */
-#cortis-page .sticker-art:active {
-  transform: scale(1.04);
-}
-
-/* ===== 4. CHỮ CORTIS Ở GIỮA ===== */
-#cortis-page .cortis-title {
+/* Sticker */
+.sticker {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 43%;
-  z-index: 5;
-
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  z-index: 2;
   opacity: 0;
-  transform: translate(-50%, -50%);
-
-  animation: title-burst 1.2s
-    cubic-bezier(.16, 1, .3, 1)
-    .1s both;
+  transform: translate(-50%, -50%) scale(.05) rotate(var(--rot, 0deg));
+  transform-origin: center;
+  animation: burst .85s cubic-bezier(.16,.8,.25,1.15)
+             var(--delay) forwards;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
-#cortis-page .cortis-title img {
+.sticker img {
   display: block;
   width: 100%;
   height: auto;
-
-  animation: title-float 3.5s
-    ease-in-out 1.4s infinite;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 2px #31516b13);
 }
 
-@keyframes title-burst {
+/* Bung từ giữa đến vị trí cuối */
+@keyframes burst {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(.05);
+    transform: translate(-50%, -50%) scale(.05)
+               rotate(0deg);
   }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08)
+               rotate(var(--rot, 0deg));
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1)
+               rotate(var(--rot, 0deg));
+  }
+}
 
+@keyframes titleAppear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.15);
+  }
   75% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1.06);
   }
-
   100% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
 }
 
-/* Chữ nổi nhẹ tại chỗ, không rung như sticker */
-@keyframes title-float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-3px);
-  }
+/* Chữ chính có chuyển động riêng, không rung liên tục */
+@keyframes titleIdle {
+  0%, 88%, 100% { transform: scale(1) rotate(0); }
+  92% { transform: scale(1.035) rotate(-.5deg); }
+  95% { transform: scale(1.035) rotate(.5deg); }
+  98% { transform: scale(1.02) rotate(-.2deg); }
 }
 
-/* ===== 5. ĐIỆN THOẠI ===== */
+/* Hover chỉ tác động sticker */
+.sticker:hover,
+.sticker:focus-visible {
+  z-index: 10;
+  animation: none;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.sticker img {
+  transition: transform .28s ease, filter .28s ease;
+}
+
+.sticker:hover img,
+.sticker:focus-visible img,
+.sticker.tapped img {
+  animation: wiggle  .48s ease-in-out;
+  transform: scale(1.10);
+  filter: drop-shadow(0 5px 5px #31516b24);
+}
+
+@keyframes wiggle {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: -2deg; }
+  50% { rotate: 2deg; }
+  75% { rotate: -1deg; }
+}
+
+/* Điện thoại */
 @media (max-width: 600px) {
-  #cortis-page .cortis-stage {
-    aspect-ratio: 4 / 5;
-    min-height: 320px;
+  .cover {
+    height: 125vw;
+    min-height: 450px;
+    max-height: 680px;
   }
 
-  #cortis-page .sticker {
-    width: 15%;
-  }
-
-  #cortis-page .cortis-title {
-    width: 60%;
+  .center {
+    width: 54%;
+    top: 47%;
   }
 }
 
-/* ===== 6. HẠN CHẾ CHUYỂN ĐỘNG ===== */
+/* Tôn trọng tùy chọn giảm chuyển động */
 @media (prefers-reduced-motion: reduce) {
-  #cortis-page .sticker {
-    animation: none;
-    opacity: 1;
-    left: var(--x);
-    top: var(--y);
-  }
-
-  #cortis-page .sticker-art:hover,
-  #cortis-page .sticker-art:focus-visible {
-    animation: none;
-  }
-
-  #cortis-page .cortis-title {
-    animation: none;
-    opacity: 1;
-  }
-
-  #cortis-page .cortis-title img {
-    animation: none;
+  .sticker, .center, .center img {
+    animation-duration: .01ms !important;
+    animation-delay: 0s !important;
   }
 }
 </style>
+</head>
 
+<body>
+<div class="cover" id="cover">
+
+  <!-- CHỮ CORTIS -->
+  <div class="center" id="mainTitle">
+    <img src="https://lh3.googleusercontent.com/d/1ba2Z13pA1JlHIL48LUPg9w4Qc14lK-hd"
+         alt="CORTIS">
+  </div>
+
+  <!-- Sticker -->
+  <div class="sticker" style="--x:11%;--y:16%;--w:15%;--rot:-9deg;--delay:.2s">
+    <img src="https://lh3.googleusercontent.com/d/1L280Tml16whP37q587_59n8z0I4Ly1fH" alt="Camera">
+  </div>
+
+  <div class="sticker" style="--x:18%;--y:30%;--w:12%;--rot:-5deg;--delay:.28s">
+    <img src="https://lh3.googleusercontent.com/d/15WS0jjOhAgkijh6bErE3NcvBCeOIFmXB" alt="GO sign">
+  </div>
+
+  <div class="sticker" style="--x:34%;--y:17%;--w:17%;--rot:-8deg;--delay:.36s">
+    <img src="https://lh3.googleusercontent.com/d/1l0JS35LD4rAvPiq8Q_SwWz_meWt8ZL2A" alt="Red guitar">
+  </div>
+
+  <div class="sticker" style="--x:66%;--y:20%;--w:15%;--rot:-5deg;--delay:.44s">
+    <img src="https://lh3.googleusercontent.com/d/1_3jD95a9j9bJCRk82NIRnkm1ofsZ0xY1" alt="Cassette stack">
+  </div>
+
+  <div class="sticker" style="--x:83%;--y:17%;--w:12%;--rot:5deg;--delay:.52s">
+    <img src="https://lh3.googleusercontent.com/d/1-jRPCgYZM-B_oqoVxrPHxmO7f8Kf4ly0" alt="Vinyl record">
+  </div>
+
+  <div class="sticker" style="--x:93%;--y:29%;--w:10%;--rot:8deg;--delay:.60s">
+    <img src="https://lh3.googleusercontent.com/d/1008WQYSEZAZ1JSS2d9zKY1jeIh2XcaV3" alt="Fashion sticker">
+  </div>
+
+  <div class="sticker" style="--x:7%;--y:48%;--w:11%;--rot:-4deg;--delay:.68s">
+    <img src="https://lh3.googleusercontent.com/d/1OwKtnYUYMH4VBHWbo9SuNXAl0OmIBYt_" alt="CORTIS logo sticker">
+  </div>
+
+  <div class="sticker" style="--x:12%;--y:68%;--w:13%;--rot:8deg;--delay:.76s">
+    <img src="https://lh3.googleusercontent.com/d/1lF9VteBIq08pXlm3E3ZCpOdJpWvD2g5h" alt="Black guitar">
+  </div>
+
+  <div class="sticker" style="--x:23%;--y:57%;--w:9%;--rot:-7deg;--delay:.84s">
+    <img src="https://lh3.googleusercontent.com/d/1G38YvuGgrV8M_QtrPeEN91sXgBzoMsuN" alt="Microphone">
+  </div>
+
+  <div class="sticker" style="--x:74%;--y:51%;--w:10%;--rot:8deg;--delay:.92s">
+    <img src="https://lh3.googleusercontent.com/d/1DJe_x1U5VwcUXKdK0PgvdG_RiDFI88wJ" alt="Small camera">
+  </div>
+
+  <div class="sticker" style="--x:85%;--y:52%;--w:11%;--rot:7deg;--delay:1s">
+    <img src="https://lh3.googleusercontent.com/d/1Ngp4KblcjdCTkW60_uuip2rRPtYjSR3p" alt="Pink CORTIS star">
+  </div>
+
+  <div class="sticker" style="--x:94%;--y:56%;--w:7%;--rot:5deg;--delay:1.08s">
+    <img src="https://lh3.googleusercontent.com/d/1mMpwQOvT9S0EwGqnt6Wc6GXkIWsYrudg" alt="ACAI doodle">
+  </div>
+
+  <div class="sticker" style="--x:19%;--y:83%;--w:15%;--rot:-8deg;--delay:1.16s">
+    <img src="https://lh3.googleusercontent.com/d/16boiqvd3UMUnvenWoDVPS2nmoeA75Z5M" alt="Playlist cassette">
+  </div>
+
+  <div class="sticker" style="--x:35%;--y:84%;--w:11%;--rot:-5deg;--delay:1.24s">
+    <img src="https://lh3.googleusercontent.com/d/1MNBZ4RpVQw1v5vBu2-rp9AJlua6I59zb" alt="Green character">
+  </div>
+
+  <div class="sticker" style="--x:45%;--y:82%;--w:9%;--rot:2deg;--delay:1.32s">
+    <img src="https://lh3.googleusercontent.com/d/1gy-AuTfXGKhskkc5l__6uHMx5jQbl8Js" alt="Red poster">
+  </div>
+
+  <div class="sticker" style="--x:58%;--y:83%;--w:11%;--rot:4deg;--delay:1.40s">
+    <img src="https://lh3.googleusercontent.com/d/1JFXX-MFg4XbxCBLbhGzebYLyFdIPReph" alt="Acai cup">
+  </div>
+
+  <div class="sticker" style="--x:88%;--y:70%;--w:11%;--rot:4deg;--delay:1.48s">
+    <img src="https://lh3.googleusercontent.com/d/15gv5HryPn715Lnj2Hy2Ik_ybqBFZ9kjC" alt="Round badge">
+  </div>
+
+  <div class="sticker" style="--x:77%;--y:84%;--w:15%;--rot:5deg;--delay:1.56s">
+    <img src="https://lh3.googleusercontent.com/d/1hG3Y_9r_Os4fs6IMJnsW9wlvLT1c5Hr4" alt="Record stack">
+  </div>
+
+  <div class="sticker" style="--x:93%;--y:85%;--w:8%;--rot:8deg;--delay:1.64s">
+    <img src="https://lh3.googleusercontent.com/d/1NW6DDqyLtLH95CoeshE1bTtQzkge97kn" alt="Tape books">
+  </div>
+
+</div>
+
+<script>
+const cover = document.getElementById("cover");
+const stickers = document.querySelectorAll(".sticker");
+
+stickers.forEach(sticker => {
+  sticker.addEventListener("click", () => {
+    sticker.classList.remove("tapped");
+    void sticker.offsetWidth;
+    sticker.classList.add("tapped");
+
+    setTimeout(() => {
+      sticker.classList.remove("tapped");
+    }, 550);
+  });
+});
+</script>
+</body>
+</html>
