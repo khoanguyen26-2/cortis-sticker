@@ -33,17 +33,6 @@ html, body {
       #d6eafa 100%);
 }
 
-/* Các nét chấm li ti trang trí nền */
-.cover::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: .15;
-  background-image: radial-gradient(#7399bd 0.8px, transparent 0.8px);
-  background-size: 14px 14px;
-}
-
 /* CHỮ CORTIS Ở GIỮA */
 .center {
   position: absolute;
@@ -265,21 +254,4 @@ html, body {
 
 </div>
 
-<script>
-const cover = document.getElementById("cover");
-const stickers = document.querySelectorAll(".sticker");
-
-stickers.forEach(sticker => {
-  sticker.addEventListener("click", () => {
-    sticker.classList.remove("tapped");
-    void sticker.offsetWidth;
-    sticker.classList.add("tapped");
-
-    setTimeout(() => {
-      sticker.classList.remove("tapped");
-    }, 550);
-  });
-});
-</script>
-</body>
-</html>
+<script
